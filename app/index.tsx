@@ -1,15 +1,10 @@
-import { Text, View } from "react-native";
+import { useDeviceOrientation } from "@react-native-community/hooks";
+import WelcomeScreen from "./screens/welcome-screen";
+import ViewImageScreen from "./screens/view-image-screen";
+
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Hello World!</Text>
-    </View>
-  );
+  const orietantion = useDeviceOrientation();
+
+  return <ViewImageScreen />;
 }
