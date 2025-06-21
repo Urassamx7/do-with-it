@@ -1,27 +1,37 @@
 import React from "react";
-import { ImageSourcePropType, View, StyleSheet, Image } from "react-native";
+import {
+  ImageSourcePropType,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
 import Apptext from "./app-text";
 import { colors } from "../config/colors";
 interface ListItemProps {
   title: string;
   subTitle: string;
   image: string;
+  onPress: () => void;
 }
 
-const ListItem = ({ image, subTitle, title }: ListItemProps) => {
+const ListItem = ({ image, subTitle, title, onPress }: ListItemProps) => {
   return (
-    <View style={styles.container}>
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={styles.image}
-      />
-      <View>
-        <Apptext text={title} style={styles.title} />
-        <Apptext text={subTitle} style={styles.subTitle} />
+    <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+      <View style={styles.container}>
+        <Image
+          source={{
+            uri: image,
+          }}
+          style={styles.image}
+        />
+        <View>
+          <Apptext text={title} style={styles.title} />
+          <Apptext text={subTitle} style={styles.subTitle} />
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 };
 

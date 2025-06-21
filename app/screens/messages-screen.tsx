@@ -27,6 +27,15 @@ const messages = [
 ];
 
 const MessagesScreen = () => {
+  const onPress = (item: {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+  }) => {
+    console.log("Tapped!\n", item);
+  };
+
   return (
     <Screen>
       <FlatList
@@ -37,6 +46,7 @@ const MessagesScreen = () => {
             title={item.title}
             subTitle={item.description}
             image={item.image}
+            onPress={() => onPress(item)}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
