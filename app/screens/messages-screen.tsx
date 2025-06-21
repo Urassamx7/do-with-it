@@ -1,7 +1,9 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import ListItem from "../components/list-item";
-import { Screen } from "./screen";
+import { Screen } from "../components/screen";
+import { colors } from "../config/colors";
+import ListItemSeparator from "../components/list-item-separator";
 
 const messages = [
   {
@@ -37,9 +39,11 @@ const MessagesScreen = () => {
             image={item.image}
           />
         )}
+        ItemSeparatorComponent={ListItemSeparator}
       />
     </Screen>
   );
 };
+const styles = StyleSheet.create({});
 
 export default MessagesScreen;
