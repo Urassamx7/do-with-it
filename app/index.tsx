@@ -1,10 +1,24 @@
 import { useDeviceOrientation } from "@react-native-community/hooks";
-import WelcomeScreen from "./screens/welcome-screen";
-import ViewImageScreen from "./screens/view-image-screen";
-import Button from "./components/button";
+import { View } from "react-native";
+import Card from "./components/card";
+import image from "./assets/images/jacket.jpg";
 
 export default function Index() {
   const orietantion = useDeviceOrientation();
 
-  return <Button title="login" onPress={() => console.log("Tapped")} />;
+  return (
+    <View
+      style={{
+        backgroundColor: "#f8f4f4",
+        padding: 20,
+        paddingTop: 100,
+      }}
+    >
+      <Card
+        title="Black Jacket for sale!"
+        subTitle="$100"
+        image={{ uri: image }}
+      />
+    </View>
+  );
 }
