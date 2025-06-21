@@ -1,11 +1,11 @@
-import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList, StyleSheet } from "react-native";
 import ListItem from "../components/list-item";
 import { Screen } from "../components/screen";
-import { colors } from "../config/colors";
 import ListItemSeparator from "../components/list-item-separator";
+import ListDeleteAction from "../components/list-delete-action";
 
-const messages = [
+const initialMessages = [
   {
     id: 1,
     title: "T1",
@@ -27,6 +27,8 @@ const messages = [
 ];
 
 const MessagesScreen = () => {
+  const [messages, setMessages] = useState<typeof initialMessages>([]);
+
   const onPress = (item: {
     id: number;
     title: string;
@@ -36,17 +38,29 @@ const MessagesScreen = () => {
     console.log("Tapped!\n", item);
   };
 
+  const handleDelete = (message: {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+  }) => {
+    setMessages(messages.filter((m) => m.id !== message.id));
+  };
+
   return (
     <Screen>
       <FlatList
-        data={messages}
-        keyExtractor={(message) => message.id.toString()}
+        data={initialMessages}
+        keyExtractor={(initialMessage) => initialMessage.id.toString()}
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
             subTitle={item.description}
             image={item.image}
             onPress={() => onPress(item)}
+            renderRightActions={() => (
+              <ListDeleteAction onPress={() => handleDelete(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
