@@ -1,8 +1,5 @@
-import { useDeviceOrientation } from "@react-native-community/hooks";
-import ViewImageScreen from "./screens/view-image-screen";
+import MessagesScreen from "./screens/messages-screen";
 
 export default function Index() {
-  const orietantion = useDeviceOrientation();
-
-  return <ViewImageScreen />;
+  return <MessagesScreen />;
 }
