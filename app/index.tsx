@@ -1,5 +1,11 @@
-import MessagesScreen from "./screens/messages-screen";
+import Icon from "./components/icon-component";
+import ListItem from "./components/list-item";
+import { Screen } from "./components/screen";
 
 export default function Index() {
-  return <MessagesScreen />;
+  return (
+    <Screen>
+      <ListItem title="sadds " ImageComponent={<Icon />} />
+    </Screen>
+  );
 }

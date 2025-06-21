@@ -1,5 +1,5 @@
 import Constants from "expo-constants";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import { Platform, SafeAreaView, StyleSheet } from "react-native";
 
 export const Screen = ({ children }: { children: React.ReactNode }) => {
@@ -8,5 +8,6 @@ export const Screen = ({ children }: { children: React.ReactNode }) => {
 const styles = StyleSheet.create({
   screen: {
     paddingTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
+    flex: 1,
   },
 });

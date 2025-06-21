@@ -28,6 +28,7 @@ const initialMessages = [
 
 const MessagesScreen = () => {
   const [messages, setMessages] = useState(initialMessages);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const onPress = (item: {
     id: number;
@@ -64,6 +65,23 @@ const MessagesScreen = () => {
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
+        refreshing={isRefreshing}
+        onRefresh={() =>
+          setMessages([
+            {
+              id: 1,
+              title: "T1",
+              description: "D1",
+              image: "https://avatars.githubusercontent.com/u/128416567?v=4",
+            },
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: "https://avatars.githubusercontent.com/u/128416567?v=4",
+            },
+          ])
+        }
       />
     </Screen>
   );
