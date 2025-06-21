@@ -27,7 +27,7 @@ const initialMessages = [
 ];
 
 const MessagesScreen = () => {
-  const [messages, setMessages] = useState<typeof initialMessages>([]);
+  const [messages, setMessages] = useState(initialMessages);
 
   const onPress = (item: {
     id: number;
@@ -50,8 +50,8 @@ const MessagesScreen = () => {
   return (
     <Screen>
       <FlatList
-        data={initialMessages}
-        keyExtractor={(initialMessage) => initialMessage.id.toString()}
+        data={messages}
+        keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
           <ListItem
             title={item.title}

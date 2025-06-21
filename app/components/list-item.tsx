@@ -9,7 +9,7 @@ interface ListItemProps {
   subTitle: string;
   image: string;
   onPress: () => void;
-  renderRightActions?: React.ReactNode;
+  renderRightActions?: () => React.ReactNode;
 }
 
 const ListItem = ({
@@ -20,7 +20,7 @@ const ListItem = ({
   renderRightActions,
 }: ListItemProps) => {
   return (
-    <Swipeable >
+    <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight underlayColor={colors.lightGray} onPress={onPress}>
         <View style={styles.container}>
           <Image
