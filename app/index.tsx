@@ -1,18 +1,28 @@
-import { Text, TextInput } from "react-native";
-import Icon from "./components/icon-component";
-import ListItem from "./components/list-item";
+import { Switch } from "react-native";
 import { Screen } from "./components/screen";
-import AccountScreen from "./screens/account-screen";
-import ListingScreen from "./screens/listing-screen";
 import { useState } from "react";
+import AppPicker from "./components/app-picker";
 import AppTextInput from "./components/app-text-input";
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Cameras", value: 3 },
+];
 
 export default function Index() {
-  const [firstName, setFirstName] = useState("");
+  const [category, setCategory] = useState<{ label: string; value: number }>(
+    categories[0]
+  );
   return (
     <Screen>
-      <AppTextInput icon="email" placeholder="Placeholder"
+      <AppPicker
+        icon="apps"
+        items={categories}
+        placeholder="Category"
+        selectedItem={category}
+        onSelectedItem={setCategory}
       />
+      <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
 }
