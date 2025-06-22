@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, View, StyleSheet, ImageSourcePropType } from "react-native";
-import imgs from "../assets/images/jacket.jpg";
+import imgs from "./assets/jacket.jpg";
 import Apptext from "../components/app-text";
 import { colors } from "../config/colors";
 import ListItem from "../components/list-item";

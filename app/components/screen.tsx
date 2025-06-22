@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextStyleAndroid,
   TextStyleIOS,
+  View,
 } from "react-native";
 
 interface ScreenProps {
@@ -16,7 +17,7 @@ interface ScreenProps {
 export const Screen = ({ children, style, ...rest }: ScreenProps) => {
   return (
     <SafeAreaView style={[styles.screen, style]} {...rest}>
-      {children}
+      <View style={style}>{children}</View>
     </SafeAreaView>
   );
 };

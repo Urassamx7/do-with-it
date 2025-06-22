@@ -6,14 +6,12 @@ import AppText from "./app-text";
 interface CardProps {
   title: string;
   subTitle: string;
-  image: {
-    uri: ImageSourcePropType;
-  };
+  image: ImageSourcePropType;
 }
 const Card = ({ image, subTitle, title }: CardProps) => {
   return (
     <View style={styles.card}>
-      <Image source={image.uri} style={styles.image}></Image>
+      <Image source={image} style={styles.image}></Image>
       <View style={styles.detailsContainer}>
         <AppText text={title} style={styles.title} />
         <AppText text={subTitle} style={styles.subTitle} />
