@@ -4,7 +4,7 @@ import { colors } from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface IconProps {
-  name: string;
+  name: keyof typeof MaterialCommunityIcons.glyphMap;
   size?: number;
   backgroundColor: string;
   iconColor?: string;
