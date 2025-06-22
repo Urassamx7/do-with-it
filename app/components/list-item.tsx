@@ -10,7 +10,7 @@ interface ListItemProps {
   image?: string;
   onPress?: () => void;
   renderRightActions?: () => React.ReactNode;
-  ImageComponent?: React.ReactNode;
+  IconComponent?: React.ReactNode;
 }
 
 const ListItem = ({
@@ -19,14 +19,14 @@ const ListItem = ({
   title,
   onPress,
   renderRightActions,
-  ImageComponent,
+  IconComponent,
 }: ListItemProps) => {
   return (
     <ReanimatedSwipeable renderRightActions={renderRightActions}>
       <TouchableHighlight underlayColor={colors.lightGray} onPress={onPress}>
         <View style={styles.container}>
-          {ImageComponent}
-          {image && (
+          {IconComponent}
+          {!!image && (
             <Image
               source={{
                 uri: image,
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 10,
+    backgroundColor: colors.white,
   },
   detailsContainer: {
     marginLeft: 10,

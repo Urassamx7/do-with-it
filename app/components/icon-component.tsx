@@ -5,9 +5,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface IconProps {
   name: string;
-  size: number;
+  size?: number;
   backgroundColor: string;
-  iconColor: string;
+  iconColor?: string;
 }
 
 const Icon = ({
@@ -27,7 +27,7 @@ const Icon = ({
         alignItems: "center",
       }}
     >
-      <MaterialCommunityIcons name={name} color={iconColor} size={size/2} />
+      <MaterialCommunityIcons name={name} color={iconColor} size={size / 2} />
     </View>
   );
 };
