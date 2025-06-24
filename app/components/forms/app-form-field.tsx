@@ -1,9 +1,9 @@
-import React from "react";
-import AppTextInput from "./app-text-input";
-import ErrorMessage from "./error-message";
-import { useFormikContext } from "formik";
-import { TextInputProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useFormikContext } from "formik";
+import React from "react";
+import { TextInputProps } from "react-native";
+import AppTextInput from "../app-text-input";
+import ErrorMessage from "./error-message";
 
 interface AppFormFieldProps extends TextInputProps {
   name: string;

@@ -1,12 +1,10 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
+import * as Yup from "yup";
+
 import { Screen } from "../components/screen";
 import logo from "./assets/logo-red.png";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import AppFormField from "../components/app-form-field";
-import SubmitButton from "../components/submit-button";
-import AppForm from "../components/app-form";
+import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 
 /**
  * /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i

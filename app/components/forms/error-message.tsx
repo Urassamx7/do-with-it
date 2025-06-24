@@ -1,6 +1,6 @@
-import { colors } from "../config/colors";
-import Apptext from "./app-text";
 import { StyleSheet } from "react-native";
+import { colors } from "../../config/colors";
+import Apptext from "../app-text";
 
 const ErrorMessage = ({
   error,
