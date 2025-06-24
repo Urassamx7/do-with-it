@@ -8,6 +8,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import ErrorMessage from "../components/error-message";
 import AppFormField from "../components/app-form-field";
+import { View } from "react-native";
+import SubmitButton from "../components/submit-button";
 
 /**
  * /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -28,7 +30,7 @@ const LoginScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
-        {({ handleSubmit, errors, touched }) => (
+        {() => (
           <>
             <AppFormField
               autoCapitalize="none"
@@ -40,8 +42,6 @@ const LoginScreen = () => {
               name="email"
             />
 
-            <ErrorMessage error={errors.email} visible={touched.email!} />
-
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
@@ -51,9 +51,7 @@ const LoginScreen = () => {
               icon="lock"
               name="password"
             />
-
-            <ErrorMessage error={errors.password} visible={touched.password!} />
-            <AppButton title="login" onPress={handleSubmit} />
+            <SubmitButton title="login" />
           </>
         )}
       </Formik>
