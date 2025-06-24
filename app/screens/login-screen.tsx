@@ -7,6 +7,7 @@ import AppButton from "../components/app-button";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import ErrorMessage from "../components/error-message";
+import AppFormField from "../components/app-form-field";
 
 /**
  * /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -27,30 +28,28 @@ const LoginScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
-        {({ handleChange, handleSubmit, errors, handleBlur, touched }) => (
+        {({ handleSubmit, errors, touched }) => (
           <>
-            <AppTextInput
+            <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
               keyboardType="email-address"
               textContentType="emailAddress"
               icon="email"
               placeholder="e-mail"
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
+              name="email"
             />
 
             <ErrorMessage error={errors.email} visible={touched.email!} />
 
-            <AppTextInput
+            <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
               textContentType="password"
               secureTextEntry
               placeholder="Password"
               icon="lock"
-              onChangeText={handleChange("password")}
-              onBlur={handleBlur("password")}
+              name="password"
             />
 
             <ErrorMessage error={errors.password} visible={touched.password!} />

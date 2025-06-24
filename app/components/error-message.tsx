@@ -9,8 +9,8 @@ const ErrorMessage = ({
   error: string | undefined;
   visible: boolean;
 }) => {
+  
   if (!visible || !error) return null;
-
   return <Apptext text={error} style={styles.error}></Apptext>;
 };
 
