@@ -1,21 +1,21 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  View,
+  Button,
+  FlatList,
+  Modal,
   StyleSheet,
   TextInputProps,
   TouchableWithoutFeedback,
-  Modal,
-  Button,
-  FlatList,
+  View,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import Apptext from "./app-text";
-import { Screen } from "./screen";
 import PickerItem from "./picker-item";
+import { Screen } from "./screen";
 
 interface AppTextInputProps extends TextInputProps {
-  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
   items: {
     label: string;
     value: number;
@@ -25,7 +25,7 @@ interface AppTextInputProps extends TextInputProps {
     value: number;
   };
 
-  onSelectedItem: React.Dispatch<
+  onSelectItem: React.Dispatch<
     React.SetStateAction<{
       label: string;
       value: number;
@@ -35,13 +35,14 @@ interface AppTextInputProps extends TextInputProps {
 
 const AppPicker = ({
   icon,
-  placeholder,
   items,
+  placeholder,
   selectedItem,
-  onSelectedItem,
+  onSelectItem,
 }: AppTextInputProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  console.log(selectedItem.label);
+  console.log("Selected:", selectedItem?.label ?? "Nenhum item selecionado");
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setIsOpenModal(!isOpenModal)}>
@@ -79,7 +80,7 @@ const AppPicker = ({
                 label={item.label}
                 onPress={() => {
                   setIsOpenModal(!isOpenModal);
-                  onSelectedItem(item);
+                  onSelectItem(item);
                 }}
               />
             )}
