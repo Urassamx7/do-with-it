@@ -1,8 +1,8 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import Icon from "./icon-component";
-import Apptext from "./app-text";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Icon from "./icon-component";
+import Apptext from "./text";
 
 interface CategoryPickerItemProps {
   item: {

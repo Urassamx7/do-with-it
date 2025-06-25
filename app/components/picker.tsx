@@ -10,9 +10,9 @@ import {
   View,
 } from "react-native";
 import defaultStyles from "../config/styles";
-import Apptext from "./app-text";
 import PickerItem from "./picker-item";
 import { Screen } from "./screen";
+import Apptext from "./text";
 
 interface AppTextInputProps extends TextInputProps {
   icon?: keyof typeof MaterialCommunityIcons.glyphMap;

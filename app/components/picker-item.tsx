@@ -1,7 +1,7 @@
-import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
-import Apptext from "./app-text";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import Apptext from "./text";
 
 const PickerItem = ({
   item,

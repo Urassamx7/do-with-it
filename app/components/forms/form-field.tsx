@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFormikContext } from "formik";
 import React from "react";
 import { TextInputProps } from "react-native";
-import AppTextInput from "../app-text-input";
+import AppTextInput from "../text-input";
 import ErrorMessage from "./error-message";
 
 interface AppFormFieldProps extends TextInputProps {

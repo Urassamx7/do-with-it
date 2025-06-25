@@ -3,7 +3,7 @@ import React from "react";
 import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { colors } from "../../config/colors";
-import Apptext from "../app-text";
+import Apptext from "../text";
 
 interface ListItemProps {
   title: string;

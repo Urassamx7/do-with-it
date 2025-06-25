@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import React from "react";
-import AppPicker from "../app-picker";
+import AppPicker from "../picker";
 import ErrorMessage from "./error-message";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
