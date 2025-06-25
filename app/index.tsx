@@ -6,24 +6,9 @@ import Button from "./components/button";
 import { Image } from "react-native";
 import ImageInput from "./components/image-input";
 import ImageInputList from "./components/image-input-list";
+import ListingEditScreen from "./screens/listing-edit-screen";
+import LoginScreen from "./screens/login-screen";
 
 export default function Index() {
-  const [imageUri, setImageUri] = useState<string[]>([]);
-
-  const handleAddImage = (uri: string) => {
-    setImageUri([...imageUri, uri]);
-  };
-  const handleRemoveImage = (uri: string) => {
-    setImageUri(imageUri.filter((imageUri) => imageUri !== uri));
-  };
-
-  return (
-    <Screen>
-      <ImageInputList
-        imageUris={imageUri}
-        onAddImage={handleAddImage}
-        onRemoveImage={handleRemoveImage}
-      />
-    </Screen>
-  );
+  return <ListingEditScreen />;
 }

@@ -56,7 +56,6 @@ const AppPicker = ({
   PickerItemComponent = PickerItem,
 }: AppTextInputProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  console.log("Selected:", selectedItem?.label ?? "Nenhum item selecionado");
 
   return (
     <>

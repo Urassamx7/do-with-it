@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Icon from "./icon-component";
 import Apptext from "./text";
 
@@ -17,8 +17,14 @@ interface CategoryPickerItemProps {
 const CategoryPickerItem = ({ item, onPress }: CategoryPickerItemProps) => {
   return (
     <View style={styles.container}>
-      <Icon backgroundColor={item.backgroundColor} name={item.icon} size={80} />
-      <Apptext text={item.label} style={styles.label} />
+      <TouchableOpacity onPress={onPress}>
+        <Icon
+          backgroundColor={item.backgroundColor}
+          name={item.icon}
+          size={80}
+        /></TouchableOpacity>
+        <Apptext text={item.label} style={styles.label} />
+      
     </View>
   );
 };

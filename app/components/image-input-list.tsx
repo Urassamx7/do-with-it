@@ -13,8 +13,6 @@ const ImageInputList = ({
   onRemoveImage,
   onAddImage,
 }: ImageInputListProps) => {
-  console.log(imageUris);
-
   const scrollViewRef = useRef<ScrollView>(null);
 
   return (
