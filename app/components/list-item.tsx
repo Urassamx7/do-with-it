@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
 import Apptext from "./app-text";
 import { colors } from "../config/colors";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface ListItemProps {
   title: string;
@@ -36,8 +37,14 @@ const ListItem = ({
           )}
           <View style={styles.detailsContainer}>
             <Apptext text={title} style={styles.title} />
+
             {subTitle && <Apptext text={subTitle} style={styles.subTitle} />}
           </View>
+          <MaterialCommunityIcons
+            color={colors.mediumGray}
+            name="chevron-right"
+            size={25}
+          />
         </View>
       </TouchableHighlight>
     </ReanimatedSwipeable>
@@ -47,10 +54,12 @@ const ListItem = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    alignItems: "center",
     padding: 10,
     backgroundColor: colors.white,
   },
   detailsContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },

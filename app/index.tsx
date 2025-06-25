@@ -1,6 +1,5 @@
-import ListingEditScreen from "./screens/listing-edit-screen";
-
+import MessagesScreen from "./screens/messages-screen";
 
 export default function Index() {
-  return <ListingEditScreen />;
+  return <MessagesScreen />;
 }
