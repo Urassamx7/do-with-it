@@ -1,6 +1,11 @@
 import React from "react";
 import * as Yup from "yup";
-import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
+import {
+  AppForm,
+  AppFormField as FormField,
+  AppFormPicker as FormPicker,
+  SubmitButton,
+} from "../components/forms";
 import { Screen } from "../components/screen";
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -26,25 +31,27 @@ const ListingEditScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
-        <AppFormField
+        <FormField
           maxLength={255}
           name="title"
           placeholder="Title"
           icon="pen-minus"
         />
-        <AppFormField
+        <FormField
           keyboardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
           icon="tag"
+          width={120}
         />
-        <AppFormPicker
+        <FormPicker
+          width={180}
           items={categories}
           name="category"
           placeholder="Category"
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           numberOfLines={3}

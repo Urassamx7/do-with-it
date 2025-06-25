@@ -31,6 +31,7 @@ interface AppTextInputProps extends TextInputProps {
       value: number;
     }>
   >;
+  width?: any;
 }
 
 const AppPicker = ({
@@ -39,6 +40,7 @@ const AppPicker = ({
   placeholder,
   selectedItem,
   onSelectItem,
+  width = "100%",
 }: AppTextInputProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   console.log("Selected:", selectedItem?.label ?? "Nenhum item selecionado");
@@ -46,7 +48,14 @@ const AppPicker = ({
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setIsOpenModal(!isOpenModal)}>
-        <View style={styles.container}>
+        <View
+          style={[
+            styles.container,
+            {
+              width,
+            },
+          ]}
+        >
           {!!icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -96,7 +105,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
