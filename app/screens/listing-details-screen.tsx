@@ -1,9 +1,9 @@
 import React from "react";
-import { Image, View, StyleSheet, ImageSourcePropType } from "react-native";
-import imgs from "./assets/jacket.jpg";
+import { Image, StyleSheet, View } from "react-native";
 import Apptext from "../components/app-text";
+import ListItem from "../components/lists/list-item";
 import { colors } from "../config/colors";
-import ListItem from "../components/list-item";
+import imgs from "./assets/jacket.jpg";
 
 const ListingDetailsScreen = () => {
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
