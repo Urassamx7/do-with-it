@@ -36,20 +36,15 @@ const ListItem = ({
             />
           )}
           <View style={styles.detailsContainer}>
+            <Apptext text={title} numberOfLines={1} style={styles.title} />
 
-
-
-            <Apptext 
-            text={title} 
-            numberOfLines={1}
-            style={styles.title} />
-
-
-
-            {subTitle && <Apptext 
-            text={subTitle} 
-            numberOfLines={2}
-            style={styles.subTitle} />}
+            {subTitle && (
+              <Apptext
+                text={subTitle}
+                numberOfLines={2}
+                style={styles.subTitle}
+              />
+            )}
           </View>
           <MaterialCommunityIcons
             color={colors.mediumGray}
