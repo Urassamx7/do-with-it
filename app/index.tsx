@@ -5,35 +5,25 @@ import { Screen } from "./components/screen";
 import Button from "./components/button";
 import { Image } from "react-native";
 import ImageInput from "./components/image-input";
+import ImageInputList from "./components/image-input-list";
 
 export default function Index() {
-  const reqPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted)
-      alert("You need to enable permissions to access the library.");
-    console.log(granted);
+  const [imageUri, setImageUri] = useState<string[]>([]);
 
-    return granted;
+  const handleAddImage = (uri: string) => {
+    setImageUri([...imageUri, uri]);
   };
-  const [imageUri, setImageUri] = useState<any>();
-  useEffect(() => {
-    reqPermission();
-  }, []);
-
-  const onSelectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.canceled) {
-        setImageUri(result.assets[0].uri);
-      }
-    } catch (error) {
-      console.log("Error reading an image", error);
-    }
+  const handleRemoveImage = (uri: string) => {
+    setImageUri(imageUri.filter((imageUri) => imageUri !== uri));
   };
 
   return (
     <Screen>
-      <ImageInput imageUri={imageUri} onChangeImage={setImageUri} />
+      <ImageInputList
+        imageUris={imageUri}
+        onAddImage={handleAddImage}
+        onRemoveImage={handleRemoveImage}
+      />
     </Screen>
   );
 }
