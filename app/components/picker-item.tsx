@@ -1,17 +1,23 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import Apptext from "./app-text";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const PickerItem = ({
-  label,
+  item,
   onPress,
 }: {
-  label: string;
   onPress: () => void;
+  item: {
+    icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+    backgroundColor?: string;
+    label: string;
+    value: number;
+  };
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Apptext text={label} style={styles.text} />
+      <Apptext text={item.label} style={styles.text} />
     </TouchableOpacity>
   );
 };

@@ -17,6 +17,8 @@ import { Screen } from "./screen";
 interface AppTextInputProps extends TextInputProps {
   icon?: keyof typeof MaterialCommunityIcons.glyphMap;
   items: {
+    icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+    backgroundColor?: string;
     label: string;
     value: number;
   }[];
@@ -24,7 +26,6 @@ interface AppTextInputProps extends TextInputProps {
     label: string;
     value: number;
   };
-
   onSelectItem: React.Dispatch<
     React.SetStateAction<{
       label: string;
@@ -32,6 +33,16 @@ interface AppTextInputProps extends TextInputProps {
     }>
   >;
   width?: any;
+  PickerItemComponent?: React.ComponentType<{
+    item: {
+      icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+      backgroundColor?: string;
+      label: string;
+      value: number;
+    };
+    onPress: () => void;
+  }>;
+  numberOfColumns: number;
 }
 
 const AppPicker = ({
@@ -40,7 +51,9 @@ const AppPicker = ({
   placeholder,
   selectedItem,
   onSelectItem,
+  numberOfColumns,
   width = "100%",
+  PickerItemComponent = PickerItem,
 }: AppTextInputProps) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   console.log("Selected:", selectedItem?.label ?? "Nenhum item selecionado");
@@ -84,9 +97,10 @@ const AppPicker = ({
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
+            numColumns={numberOfColumns}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setIsOpenModal(!isOpenModal);
                   onSelectItem(item);
