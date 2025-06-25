@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
 import { Screen } from "../components/screen";
 import ListItem from "../components/lists/list-item";
 import ListDeleteAction from "../components/lists/list-delete-action";
@@ -67,7 +67,7 @@ const MessagesScreen = () => {
         )}
         ItemSeparatorComponent={ListItemSeparator}
         refreshing={isRefreshing}
-        onRefresh={() =>
+        onRefresh={() => {
           setMessages([
             {
               id: 1,
@@ -81,12 +81,11 @@ const MessagesScreen = () => {
               description: "D2",
               image: "https://avatars.githubusercontent.com/u/128416567?v=4",
             },
-          ])
-        }
+          ]);
+        }}
       />
     </Screen>
   );
 };
-const styles = StyleSheet.create({});
 
 export default MessagesScreen;

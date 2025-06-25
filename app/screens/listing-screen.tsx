@@ -3,7 +3,7 @@ import { Screen } from "../components/screen";
 
 import Card from "../components/card";
 import { FlatList } from "react-native-gesture-handler";
-import { ImageSourcePropType, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { colors } from "../config/colors";
 import jacket from "./assets/jacket.jpg";
 import couch from "./assets/couch.jpg";
