@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import ImageInputList from "../image-input-list";
 import ErrorMessage from "./error-message";
 import { useFormikContext } from "formik";

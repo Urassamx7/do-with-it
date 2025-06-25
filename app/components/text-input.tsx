@@ -1,11 +1,12 @@
-import React from "react";
-import { View, StyleSheet, TextInputProps , TextInput } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
 
 import defaultStyles from "../config/styles";
+import { IconType } from "../utils/types";
 
 interface AppTextInputProps extends TextInputProps {
-  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  icon?: IconType
   width?: any;
 }
 

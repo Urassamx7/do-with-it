@@ -7,7 +7,7 @@ function WelcomeScreen() {
     <ImageBackground blurRadius={10} source={bg} style={styles.background}>
       <View style={styles.logoContainer}>
         <Image source={icon} style={styles.logo} />
-        <Text style={styles.tagline}>Sell What You Don't Need</Text>
+        <Text style={styles.tagline}>Sell What You Don&apos;t Need</Text>
       </View>
 
       <View style={styles.buttonContainer}>

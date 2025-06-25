@@ -1,11 +1,11 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Icon from "../components/icon-component";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ListItem from "../components/lists/list-item";
+import ListItemSeparator from "../components/lists/list-item-separator";
 import { Screen } from "../components/screen";
 import { colors } from "../config/colors";
-import ListItemSeparator from "../components/lists/list-item-separator";
+import { IconType } from "../utils/types";
 
 const menuItems = [
   {
@@ -23,8 +23,6 @@ const menuItems = [
     },
   },
 ];
-
-type MaterialIcons = keyof typeof MaterialCommunityIcons.glyphMap;
 
 const AccountScreen = () => {
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
@@ -46,7 +44,7 @@ const AccountScreen = () => {
               title={item.title}
               IconComponent={
                 <Icon
-                  name={item.icon.name as MaterialIcons}
+                  name={item.icon.name as IconType}
                   backgroundColor={item.icon.backgroundColor}
                 />
               }

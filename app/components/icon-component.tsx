@@ -1,12 +1,13 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
 import { colors } from "../config/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { IconType } from "../utils/types";
 
 interface IconProps {
-  name: keyof typeof MaterialCommunityIcons.glyphMap;
+  name: IconType
   size?: number;
-  backgroundColor: string;
+  backgroundColor?: string;
   iconColor?: string;
 }
 

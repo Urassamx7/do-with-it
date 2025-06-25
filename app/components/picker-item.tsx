@@ -1,7 +1,7 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import Apptext from "./text";
+import { IconType } from "../utils/types";
 
 const PickerItem = ({
   item,
@@ -9,7 +9,7 @@ const PickerItem = ({
 }: {
   onPress: () => void;
   item: {
-    icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+    icon?: IconType
     backgroundColor?: string;
     label: string;
     value: number;

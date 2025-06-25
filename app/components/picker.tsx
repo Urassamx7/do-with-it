@@ -13,11 +13,12 @@ import defaultStyles from "../config/styles";
 import PickerItem from "./picker-item";
 import { Screen } from "./screen";
 import Apptext from "./text";
+import { IconType } from "../utils/types";
 
 interface AppTextInputProps extends TextInputProps {
-  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  icon?: IconType
   items: {
-    icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+    icon?: IconType
     backgroundColor?: string;
     label: string;
     value: number;
@@ -35,7 +36,7 @@ interface AppTextInputProps extends TextInputProps {
   width?: any;
   PickerItemComponent?: React.ComponentType<{
     item: {
-      icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+      icon?: IconType
       backgroundColor?: string;
       label: string;
       value: number;

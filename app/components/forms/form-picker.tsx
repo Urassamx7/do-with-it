@@ -2,7 +2,7 @@ import { useFormikContext } from "formik";
 import React from "react";
 import AppPicker from "../picker";
 import ErrorMessage from "./error-message";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { IconType } from "@/app/utils/types";
 
 interface AppFormPickerProps {
   items: {
@@ -14,7 +14,7 @@ interface AppFormPickerProps {
   width?: any;
   PickerItemComponent?: React.ComponentType<{
     item: {
-      icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+      icon?: IconType
       backgroundColor?: string;
       label: string;
       value: number;

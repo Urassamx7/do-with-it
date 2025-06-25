@@ -1,13 +1,13 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Icon from "./icon-component";
 import Apptext from "./text";
+import { IconType } from "../utils/types";
 
 interface CategoryPickerItemProps {
   item: {
-    icon: keyof typeof MaterialCommunityIcons.glyphMap;
-    backgroundColor: string;
+    icon?: IconType;
+    backgroundColor?: string;
     label: string;
     value: number;
   };
@@ -22,9 +22,9 @@ const CategoryPickerItem = ({ item, onPress }: CategoryPickerItemProps) => {
           backgroundColor={item.backgroundColor}
           name={item.icon}
           size={80}
-        /></TouchableOpacity>
-        <Apptext text={item.label} style={styles.label} />
-      
+        />
+      </TouchableOpacity>
+      <Apptext text={item.label} style={styles.label} />
     </View>
   );
 };
