@@ -8,8 +8,9 @@ import ListDeleteAction from "../components/list-delete-action";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    description:
+      " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur enimullam ad, suscipit tempora in dignissimos id eveniet, commodi cupiditatedicta. Eveniet dolorum consectetur et recusandae harum, hic ducimussimilique. Neque autem nesciunt accusantium blanditiis facere nobistemporibus, dicta quae expedita numquam debitis impedit suscipitconsequatur necessitatibus est reiciendis architecto.",
     image: "https://avatars.githubusercontent.com/u/128416567?v=4",
   },
   {

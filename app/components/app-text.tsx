@@ -1,15 +1,13 @@
 import React from "react";
-import { Text, TextStyle } from "react-native";
+import { Text, TextProps, TextStyle } from "react-native";
 import defaultStyles from "../config/styles";
 
-const Apptext = ({
-  text,
-  style,
-  ...rest
-}: {
+interface AppTextProps extends TextProps {
   text: string;
   style?: TextStyle;
-}) => {
+}
+
+const Apptext = ({ text, style, ...rest }: AppTextProps) => {
   return (
     <Text style={[defaultStyles.text, style]} {...rest}>
       {text}
