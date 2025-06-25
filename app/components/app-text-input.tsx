@@ -5,7 +5,7 @@ import { TextInput } from "react-native";
 import defaultStyles from "../config/styles";
 
 interface AppTextInputProps extends TextInputProps {
-  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
   width?: any;
 }
 

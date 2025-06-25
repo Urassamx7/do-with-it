@@ -31,18 +31,12 @@ const ListingEditScreen = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
-        <FormField
-          maxLength={255}
-          name="title"
-          placeholder="Title"
-          icon="pen-minus"
-        />
+        <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
-          icon="tag"
           width={120}
         />
         <FormPicker

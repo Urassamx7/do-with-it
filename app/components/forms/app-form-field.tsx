@@ -8,7 +8,7 @@ import ErrorMessage from "./error-message";
 interface AppFormFieldProps extends TextInputProps {
   name: string;
   width?: any;
-  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
 }
 
 const AppFormField = ({
