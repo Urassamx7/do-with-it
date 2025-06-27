@@ -1,19 +1,16 @@
 import { Button, Text, View } from "react-native";
 import {
-  NavigationContainer,
   RouteProp,
   useNavigation,
-  useRoute,
+  useRoute
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Screen } from "./components/screen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AccountScreen from "./screens/account-screen";
 import ListingScreen from "./screens/listing-screen";
-import AuthNavigator from "./navigation/auth-navigator";
-import myTheme from "./navigation/navigation-theme";
+import AppNavigator from "./navigation/app-navigator";
 
 type RootStackParamList = {
   Tweets: undefined;
@@ -120,5 +117,10 @@ const TabNavigator = () => (
 );
 
 export default function Index() {
-  return <AuthNavigator  />;
+  return (
+    <>
+      
+      <AppNavigator />
+    </>
+  );
 }

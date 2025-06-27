@@ -4,16 +4,19 @@ import ListItem from "../components/lists/list-item";
 import Apptext from "../components/text";
 import { colors } from "../config/colors";
 import imgs from "./assets/jacket.jpg";
+import { FeedNavigationProp } from "../navigation/feed-navigator";
 
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ({ route }: FeedNavigationProp) => {
+  const listing = route.params;
+
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
 
   return (
     <View>
-      <Image source={imgs} style={styles.image} />
+      <Image source={listing.item.image} style={styles.image} />
       <View style={styles.detailsContainer}>
-        <Apptext text="Black jacket for sale" style={styles.title} />
-        <Apptext text="$100" style={styles.price} />
+        <Apptext text={listing.item.title} style={styles.title} />
+        <Apptext text={`$${listing.item.price}`} style={styles.price} />
         <View style={styles.userContainer}>
           <ListItem
             image={image}
