@@ -1,6 +1,5 @@
 import {
   createNativeStackNavigator,
-  NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 import ListingScreen from "../screens/listing-screen";
@@ -43,7 +42,6 @@ const FeedNavigator = () => (
         },
         headerTintColor: "white",
         headerShown: false,
-        animation:"slide_from_right"
       }}
     />
   </Stack.Navigator>
