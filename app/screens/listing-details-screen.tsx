@@ -3,10 +3,9 @@ import { Image, StyleSheet, View } from "react-native";
 import ListItem from "../components/lists/list-item";
 import Apptext from "../components/text";
 import { colors } from "../config/colors";
-import imgs from "./assets/jacket.jpg";
-import { FeedNavigationProp } from "../navigation/feed-navigator";
+import { ListingDetailsScreenProps } from "../navigation/feed-navigator";
 
-const ListingDetailsScreen = ({ route }: FeedNavigationProp) => {
+const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
   const listing = route.params;
 
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";

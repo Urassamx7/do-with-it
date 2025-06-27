@@ -18,6 +18,10 @@ type FeedStackParamList = {
 };
 export type FeedNavigationProp = NativeStackScreenProps<
   FeedStackParamList,
+  "Listings"
+>;
+export type ListingDetailsScreenProps = NativeStackScreenProps<
+  FeedStackParamList,
   "Listing Details"
 >;
 
@@ -26,24 +30,11 @@ const Stack = createNativeStackNavigator<FeedStackParamList>();
 const FeedNavigator = () => (
   <Stack.Navigator
     screenOptions={{
-      headerStyle: {
-        backgroundColor: "dodgerblue",
-      },
-      headerTintColor: "white",
+      headerShown: false,
     }}
   >
     <Stack.Screen name="Listings" component={ListingScreen} />
-    <Stack.Screen
-      name="Listing Details"
-      component={ListingDetailsScreen}
-      options={{
-        headerStyle: {
-          backgroundColor: "tomato",
-        },
-        headerTintColor: "white",
-        headerShown: false,
-      }}
-    />
+    <Stack.Screen name="Listing Details" component={ListingDetailsScreen} />
   </Stack.Navigator>
 );
 export default FeedNavigator;

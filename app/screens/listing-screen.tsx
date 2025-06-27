@@ -1,4 +1,5 @@
 import React from "react";
+import routes from "../navigation/routes";
 import { Screen } from "../components/screen";
 
 import Card from "../components/card";
@@ -7,7 +8,7 @@ import { StyleSheet } from "react-native";
 import { colors } from "../config/colors";
 import jacket from "./assets/jacket.jpg";
 import couch from "./assets/couch.jpg";
-import { FeedScreenNavigationProp } from "../navigation/feed-navigator";
+import { FeedNavigationProp } from "../navigation/feed-navigator";
 const listings = [
   {
     id: 1,
@@ -23,7 +24,7 @@ const listings = [
   },
 ];
 
-const ListingScreen = ({ navigation }: FeedScreenNavigationProp) => {
+const ListingScreen = ({ navigation }: FeedNavigationProp) => {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -34,7 +35,9 @@ const ListingScreen = ({ navigation }: FeedScreenNavigationProp) => {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
-            onPress={() => navigation.navigate("Listing Details", { item })}
+            onPress={() =>
+              navigation.navigate(routes.LISTING_DETAILS, { item })
+            }
           />
         )}
       />
