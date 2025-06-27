@@ -9,7 +9,7 @@ type AuthStackParamList = {
   Welcome: undefined;
   Login: undefined;
   Register: undefined;
-  "Listing Screen": undefined;
+
 };
 export type AuthScreenNavigationProp = NativeStackScreenProps<
   AuthStackParamList,
