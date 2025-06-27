@@ -1,14 +1,25 @@
 import { Button, Text, View } from "react-native";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Screen } from "./components/screen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AccountScreen from "./screens/account-screen";
+import ListingScreen from "./screens/listing-screen";
+import AuthNavigator from "./navigation/auth-navigator";
+import myTheme from "./navigation/navigation-theme";
 
 type RootStackParamList = {
   Tweets: undefined;
   "Tweet Details": { tweetId: string };
+  Account: undefined;
+  "Listing Screen": undefined;
 };
 type TweetsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -46,13 +57,6 @@ const TweetDetails = () => {
     </View>
   );
 };
-const Account = () => {
-  return (
-    <Screen>
-      <Text>Account: Marvin Mussacate</Text>
-    </Screen>
-  );
-};
 
 const StackNavigator = () => (
   <Stack.Navigator
@@ -75,6 +79,8 @@ const StackNavigator = () => (
         // headerShown: false,
       }}
     />
+    <Stack.Screen name="Account" component={AccountScreen} />
+    <Stack.Screen name="Listing Screen" component={ListingScreen} />
   </Stack.Navigator>
 );
 
@@ -93,17 +99,26 @@ const TabNavigator = () => (
   >
     <Tab.Screen
       name="Feed"
-      component={StackNavigator}
+      component={ListingScreen}
       options={{
         tabBarIcon: ({ size, color }) => (
           <MaterialCommunityIcons name="home" size={size} color={color} />
         ),
       }}
     />
-    <Tab.Screen name="Account" component={Account} />
+    <Tab.Screen name="Plus" component={StackNavigator} />
+    <Tab.Screen
+      name="Account"
+      component={AccountScreen}
+      options={{
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons name="account" size={size} color={color} />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
 
 export default function Index() {
-  return <TabNavigator />;
+  return <AuthNavigator  />;
 }

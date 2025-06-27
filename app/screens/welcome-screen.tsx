@@ -2,7 +2,9 @@ import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import AppButton from "../components/button";
 import bg from "./assets/background.jpg";
 import icon from "./assets/logo-red.png";
-function WelcomeScreen() {
+import { AuthScreenNavigationProp } from "../navigation/auth-navigator";
+
+function WelcomeScreen({ navigation }: AuthScreenNavigationProp) {
   return (
     <ImageBackground blurRadius={10} source={bg} style={styles.background}>
       <View style={styles.logoContainer}>
@@ -11,8 +13,12 @@ function WelcomeScreen() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <AppButton title="login" />
-        <AppButton title="register" color="secondary" />
+        <AppButton title="login" onPress={() => navigation.navigate("Login")} />
+        <AppButton
+          title="register"
+          color="secondary"
+          onPress={() => navigation.navigate("Register")}
+        />
       </View>
     </ImageBackground>
   );
