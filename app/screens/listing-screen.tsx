@@ -12,40 +12,26 @@ import { ListingsResponse } from "../api/model";
 import Apptext from "../components/text";
 import AppButton from "../components/button";
 import ActivityIndicator from "../components/activity-indicator";
+import useApi from "../hooks/use-api";
 
 const ListingScreen = ({ navigation }: FeedNavigationProp) => {
-  const [listings, setListings] = useState<ListingsResponse>([]);
-  const [hasError, setHasError] = useState(false);
-  const [isloading, setIsLoading] = useState(false);
+  const getListingsApi = useApi<ListingsResponse>(listingsApi.getListings);
 
   useEffect(() => {
-    loadListings();
+    getListingsApi.request();
   }, []);
-  const loadListings = async () => {
-    setIsLoading(true);
-    const response = await listingsApi.getListings();
-
-    if (!response.ok) {
-      setIsLoading(false);
-      setHasError(true);
-      return;
-    }
-    setIsLoading(false);
-    setHasError(false);
-    setListings(response.data!);
-  };
 
   return (
     <Screen style={styles.screen}>
-      {hasError && (
+      {getListingsApi.hasError && (
         <>
           <Apptext text="Couldn't retrieve the listings." />
-          <AppButton title="Retry" onPress={loadListings} />
+          <AppButton title="Retry" onPress={getListingsApi.request} />
         </>
       )}
-      <ActivityIndicator visible={isloading} />
+      <ActivityIndicator visible={getListingsApi.isLoading} />
       <FlatList
-        data={listings}
+        data={getListingsApi.data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
