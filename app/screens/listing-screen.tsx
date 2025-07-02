@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import routes from "../navigation/routes";
 import { Screen } from "../components/screen";
 
@@ -6,25 +6,19 @@ import Card from "../components/card";
 import { FlatList } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
 import { colors } from "../config/colors";
-import jacket from "./assets/jacket.jpg";
-import couch from "./assets/couch.jpg";
 import { FeedNavigationProp } from "../navigation/feed-navigator";
-const listings = [
-  {
-    id: 1,
-    title: "Black Jacket for sale",
-    price: 200,
-    image: jacket,
-  },
-  {
-    id: 2,
-    title: "Black Couch for sale",
-    price: 200,
-    image: couch,
-  },
-];
+import listingsApi, { ListingsResponse } from "../api/listings";
 
 const ListingScreen = ({ navigation }: FeedNavigationProp) => {
+  const [listings, setListings] = useState<ListingsResponse>([]);
+  useEffect(() => {
+    loadListings();
+  }, []);
+  const loadListings = async () => {
+    const response = await listingsApi.getListings();
+    if (response.ok) setListings(response.data!);
+  };
+
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -34,7 +28,7 @@ const ListingScreen = ({ navigation }: FeedNavigationProp) => {
           <Card
             title={item.title}
             subTitle={"$" + item.price}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() =>
               navigation.navigate(routes.LISTING_DETAILS, { item })
             }

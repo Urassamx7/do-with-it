@@ -12,14 +12,14 @@ import AppText from "./text";
 interface CardProps {
   title: string;
   subTitle: string;
-  image: ImageSourcePropType;
+  imageUrl: string;
   onPress: () => void;
 }
-const Card = ({ image, subTitle, title, onPress }: CardProps) => {
+const Card = ({ imageUrl, subTitle, title, onPress }: CardProps) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image source={image} style={styles.image}></Image>
+        <Image source={{ uri: imageUrl }} style={styles.image}></Image>
         <View style={styles.detailsContainer}>
           <AppText text={title} style={styles.title} />
           <AppText text={subTitle} style={styles.subTitle} />
