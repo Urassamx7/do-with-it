@@ -1,4 +1,5 @@
 export type ListingsResponse = ApiListingsResponseProps[];
+export type PostListing = PostListingProps
 
 
 interface ApiListingsResponseProps {
@@ -19,4 +20,24 @@ interface Image {
 interface Location {
     latitude: number;
     longitude: number;
+}
+
+
+interface PostListingProps {
+    title: string
+    price: number
+    category: {
+        value: string
+    }
+    description?: string | null,
+    images: {
+        name: string
+        type: string,
+        uri: string
+    }[]
+    location?: {
+        latitude?: number
+        longitude?: number
+    }
+
 }
