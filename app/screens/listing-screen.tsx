@@ -10,22 +10,27 @@ import { FeedNavigationProp } from "../navigation/feed-navigator";
 import listingsApi from "../api/listings";
 import { ListingsResponse } from "../api/model";
 import Apptext from "../components/text";
-import { Button } from "react-native";
 import AppButton from "../components/button";
+import ActivityIndicator from "../components/activity-indicator";
 
 const ListingScreen = ({ navigation }: FeedNavigationProp) => {
   const [listings, setListings] = useState<ListingsResponse>([]);
   const [hasError, setHasError] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
   useEffect(() => {
     loadListings();
   }, []);
   const loadListings = async () => {
+    setIsLoading(true);
     const response = await listingsApi.getListings();
+
     if (!response.ok) {
+      setIsLoading(false);
       setHasError(true);
       return;
     }
+    setIsLoading(false);
     setHasError(false);
     setListings(response.data!);
   };
@@ -38,6 +43,7 @@ const ListingScreen = ({ navigation }: FeedNavigationProp) => {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
+      <ActivityIndicator visible={isloading} />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
