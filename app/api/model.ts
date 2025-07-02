@@ -28,7 +28,7 @@ interface PostListingProps {
     price: number
     category: {
         value: string
-    }
+    } | null
     description?: string | null,
     images: {
         name: string

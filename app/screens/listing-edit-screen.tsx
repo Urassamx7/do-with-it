@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import {
   AppForm,
@@ -12,6 +12,7 @@ import FormImagePicker from "../components/forms/form-image-picker";
 import useLocation from "../hooks/use-location";
 import listingsApi from "../api/listings";
 import { PostListing } from "../api/model";
+import UploadScreen from "./upload-screen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -79,9 +80,17 @@ const categories = [
 ];
 const ListingEditScreen = () => {
   const location = useLocation();
+  const [isUploadVisible, setIsUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing: PostListing) => {
-    const result = await listingsApi.addListings({ ...listing, location });
+    setProgress(0);
+    setIsUploadVisible(true);
+    const result = await listingsApi.addListings(
+      { ...listing, location },
+      (progress: number) => setProgress(progress)
+    );
+    setIsUploadVisible(false);
 
     if (!result) return alert("Could not save the listing.");
     alert("Sucess");
@@ -89,10 +98,11 @@ const ListingEditScreen = () => {
 
   return (
     <Screen>
+      <UploadScreen progress={progress} visible={isUploadVisible} />
       <AppForm
         initialValues={{
           title: "",
-          price: "",
+          price: 0,
           description: "",
           category: null,
           images: [],

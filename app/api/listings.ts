@@ -3,12 +3,14 @@ import { ListingsResponse, PostListing } from "./model";
 
 const endpoint = '/listings'
 const getListings = () => client.get<ListingsResponse>(endpoint)
-const addListings = (listing: PostListing) => {
+
+const addListings = (listing: PostListing, onUploadProgress: (progress: number) => void
+) => {
     const data = new FormData()
     data.append('title', listing.title)
     data.append('price', String(listing.price))
     data.append('category', String(listing.category))
-    listing.category.value
+    if (listing.category) listing.category.value
 
 
     if (listing.description) { data.append('description', String(listing.description)) }
@@ -21,7 +23,14 @@ const addListings = (listing: PostListing) => {
 
     if (listing.location) data.append('location', JSON.stringify(listing.location))
 
-    return client.post(endpoint, data)
+
+
+    return client.post(
+        endpoint,
+        data,
+        {
+            onUploadProgress: (progress) => onUploadProgress(progress.loaded / progress.total!)
+        })
 }
 
 export default {
