@@ -25,7 +25,7 @@ interface Location {
 
 interface PostListingProps {
     title: string
-    price: number
+    price: string
     category: {
         value: string
     } | null

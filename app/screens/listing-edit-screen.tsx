@@ -13,6 +13,14 @@ import useLocation from "../hooks/use-location";
 import listingsApi from "../api/listings";
 import { PostListing } from "../api/model";
 import UploadScreen from "./upload-screen";
+import { FormikHelpers } from "formik";
+const initialValues = {
+  imageUris: [],
+  title: "",
+  price: "",
+  category: null,
+  description: "",
+};
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -83,16 +91,18 @@ const ListingEditScreen = () => {
   const [isUploadVisible, setIsUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const handleSubmit = async (listing: PostListing) => {
+  const handleSubmit = async (listing: PostListing, { resetForm }) => {
     setProgress(0);
     setIsUploadVisible(true);
     const result = await listingsApi.addListings(
       { ...listing, location },
       (progress: number) => setProgress(progress)
     );
-    setIsUploadVisible(false);
-
-    if (!result) return alert("Could not save the listing.");
+    resetForm(initialValues);
+    if (!result.ok) {
+      setIsUploadVisible(false);
+      return alert("Could not save the listing.");
+    }
   };
 
   return (
@@ -105,7 +115,7 @@ const ListingEditScreen = () => {
       <AppForm
         initialValues={{
           title: "",
-          price: 0,
+          price: "",
           description: "",
           category: null,
           images: [],

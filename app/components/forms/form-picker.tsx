@@ -1,4 +1,4 @@
-import { useFormikContext } from "formik";
+import { FormikContextType, FormikValues, useFormikContext } from "formik";
 import React from "react";
 import AppPicker from "../picker";
 import ErrorMessage from "./error-message";
@@ -14,7 +14,7 @@ interface AppFormPickerProps {
   width?: any;
   PickerItemComponent?: React.ComponentType<{
     item: {
-      icon?: IconType
+      icon?: IconType;
       backgroundColor?: string;
       label: string;
       value: number;
@@ -32,7 +32,8 @@ const AppFormPicker = ({
   PickerItemComponent,
   numberOfColumns = 1,
 }: AppFormPickerProps) => {
-  const { errors, setFieldValue, touched, values } = useFormikContext();
+  const { errors, setFieldValue, touched, values } =
+    useFormikContext<FormikContextType<FormikValues>>();
 
   return (
     <>

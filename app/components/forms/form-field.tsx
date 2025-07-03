@@ -8,7 +8,7 @@ import { IconType } from "@/app/utils/types";
 interface AppFormFieldProps extends TextInputProps {
   name: string;
   width?: any;
-  icon?: IconType
+  icon?: IconType;
 }
 
 const AppFormField = ({
@@ -17,13 +17,15 @@ const AppFormField = ({
   width,
   ...otherProps
 }: AppFormFieldProps) => {
-  const { handleBlur, handleChange, touched, errors } = useFormikContext();
+  const { handleBlur, handleChange, setFieldValue, touched, errors, values } =
+    useFormikContext();
   return (
     <>
       <AppTextInput
         icon={icon}
         width={width}
-        onChangeText={handleChange(name)}
+        onChangeText={(text) => setFieldValue(name, text)}
+        value={values[name]}
         onBlur={handleBlur(name)}
         {...otherProps}
       />
