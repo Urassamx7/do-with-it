@@ -29,7 +29,13 @@ const addListings = (listing: PostListing, onUploadProgress: (progress: number) 
         endpoint,
         data,
         {
-            onUploadProgress: (progress) => onUploadProgress(progress.loaded / progress.total!)
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            onUploadProgress: (progressEvent) => {
+                const progress = progressEvent.loaded / (progressEvent.total ?? 1);
+                onUploadProgress(progress);
+            },
         })
 }
 
