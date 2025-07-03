@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 import ListItem from "../components/lists/list-item";
 import Apptext from "../components/text";
 import { colors } from "../config/colors";
@@ -12,7 +13,12 @@ const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
 
   return (
     <View>
-      <Image source={listing.item.image} style={styles.image} />
+      <Image
+        uri={listing.item.images[0].url}
+        preview={{ uri: listing.item.images[0].thumbnailUrl }}
+        tint="light"
+        style={styles.image}
+      />
       <View style={styles.detailsContainer}>
         <Apptext text={listing.item.title} style={styles.title} />
         <Apptext text={`$${listing.item.price}`} style={styles.price} />

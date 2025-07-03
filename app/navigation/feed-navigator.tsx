@@ -12,7 +12,10 @@ type FeedStackParamList = {
       id: number;
       title: string;
       price: number;
-      image: number;
+      images: {
+        url: string;
+        thumbnailUrl: string;
+      }[];
     };
   };
 };
