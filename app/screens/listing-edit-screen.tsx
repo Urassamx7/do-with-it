@@ -13,7 +13,6 @@ import useLocation from "../hooks/use-location";
 import listingsApi from "../api/listings";
 import { PostListing } from "../api/model";
 import UploadScreen from "./upload-screen";
-import { FormikHelpers } from "formik";
 const initialValues = {
   imageUris: [],
   title: "",
@@ -98,11 +97,13 @@ const ListingEditScreen = () => {
       { ...listing, location },
       (progress: number) => setProgress(progress)
     );
-    resetForm(initialValues);
+
     if (!result.ok) {
       setIsUploadVisible(false);
       return alert("Could not save the listing.");
     }
+
+    resetForm(initialValues);
   };
 
   return (
