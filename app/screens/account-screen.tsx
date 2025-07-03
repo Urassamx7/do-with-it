@@ -8,6 +8,7 @@ import { colors } from "../config/colors";
 import { IconType } from "../utils/types";
 import { AccountNavigationProp } from "../navigation/account-navigator";
 import AuthContext from "../auth/auth-context";
+import authStorage from "../auth/storage";
 
 const menuItems = [
   {
@@ -33,10 +34,15 @@ const AccountScreen = ({ navigation }: AccountNavigationProp) => {
 
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
 
+  const handleLogOut = () => {
+    authStorage.removeToken();
+    setUser(null);
+  };
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem title={user.name} subTitle={user.email} image={image} />
+        <ListItem title={user?.name!} subTitle={user?.email} image={image} />
       </View>
       <View style={styles.container}>
         <FlatList
@@ -60,7 +66,7 @@ const AccountScreen = ({ navigation }: AccountNavigationProp) => {
       <ListItem
         title="Logout"
         IconComponent={<Icon name="logout" backgroundColor={colors.yellow} />}
-        onPress={() => setUser(null)}
+        onPress={handleLogOut}
       />
     </Screen>
   );

@@ -13,6 +13,7 @@ import {
 } from "../components/forms";
 import { jwtDecode } from "jwt-decode";
 import AuthContext from "../auth/auth-context";
+import authStorage from "../auth/storage";
 
 /**
  * /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -38,6 +39,7 @@ const LoginScreen = () => {
     setIsLoginFailed(false);
     const user = jwtDecode(result.data as string);
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   };
   return (
     <Screen style={styles.container}>
