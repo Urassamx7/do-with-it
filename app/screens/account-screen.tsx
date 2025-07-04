@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Icon from "../components/icon-component";
 import ListItem from "../components/lists/list-item";
@@ -7,8 +7,7 @@ import { Screen } from "../components/screen";
 import { colors } from "../config/colors";
 import { IconType } from "../utils/types";
 import { AccountNavigationProp } from "../navigation/account-navigator";
-import AuthContext from "../auth/auth-context";
-import authStorage from "../auth/storage";
+import useAuth from "../auth/use-auth";
 
 const menuItems = [
   {
@@ -28,16 +27,10 @@ const menuItems = [
     targetScreen: "Messages",
   },
 ];
-
 const AccountScreen = ({ navigation }: AccountNavigationProp) => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
 
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
-
-  const handleLogOut = () => {
-    authStorage.removeToken();
-    setUser(null);
-  };
 
   return (
     <Screen style={styles.screen}>
@@ -66,7 +59,7 @@ const AccountScreen = ({ navigation }: AccountNavigationProp) => {
       <ListItem
         title="Logout"
         IconComponent={<Icon name="logout" backgroundColor={colors.yellow} />}
-        onPress={handleLogOut}
+        onPress={logOut}
       />
     </Screen>
   );
