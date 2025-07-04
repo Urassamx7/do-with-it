@@ -1,4 +1,6 @@
 import * as SecureStore from 'expo-secure-store'
+import { jwtDecode } from 'jwt-decode'
+import { UserProfile } from './auth-context'
 
 const key = 'auth-token'
 const storeToken = async (authToken: string) => {
@@ -7,6 +9,10 @@ const storeToken = async (authToken: string) => {
     } catch (error) {
         console.log('Error storing the auth token')
     }
+}
+const getUser = async () => {
+    const token = await getToken()
+    return token ? jwtDecode<UserProfile>(token) : null
 }
 
 const getToken = async () => {
@@ -26,5 +32,5 @@ const removeToken = async () => {
 }
 
 export default {
-    getToken, removeToken, storeToken
+    getUser, removeToken, storeToken
 }

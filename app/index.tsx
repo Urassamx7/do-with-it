@@ -16,11 +16,10 @@ export default function Index() {
   useEffect(() => {
     const prepare = async () => {
       try {
-        const token = await authStorage.getToken();
-        if (token) {
+        const user = await authStorage.getUser();
+        if (user) {
           try {
-            const decodedUser = jwtDecode<UserProfile>(token);
-            setUser(decodedUser);
+            setUser(user);
           } catch (err) {
             console.warn("Token inválido", err);
             await authStorage.removeToken();
