@@ -50,7 +50,7 @@ const AccountScreen = ({ navigation }: AccountNavigationProp) => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
-              onPress={() => navigation.navigate(item.targetScreen)}
+              onPress={() => navigation.navigate(item.targetScreen as any)}
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}
