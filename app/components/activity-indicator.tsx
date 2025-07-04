@@ -25,8 +25,14 @@ const ActivityIndicator = ({ visible = false }) => {
 const styles = StyleSheet.create({
   animationContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#000",
+    width: "100%",
     flex: 1,
+    height: "100%",
+    justifyContent: "center",
+    opacity: 0.8,
+    position: "absolute",
+    zIndex: 1,
   },
 });
 
