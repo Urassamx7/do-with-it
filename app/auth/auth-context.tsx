@@ -12,8 +12,6 @@ type AuthContextType = {
   setUser: React.Dispatch<React.SetStateAction<UserProfile | null>>;
 };
 
-type Props = { children: React.ReactNode };
-
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export default AuthContext;

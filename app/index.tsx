@@ -4,7 +4,6 @@ import AppNavigator from "./navigation/app-navigator";
 import AuthNavigator from "./navigation/auth-navigator";
 import AuthContext, { UserProfile } from "./auth/auth-context";
 import authStorage from "./auth/storage";
-import { jwtDecode } from "jwt-decode";
 import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();

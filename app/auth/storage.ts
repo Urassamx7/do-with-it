@@ -3,18 +3,6 @@ import { jwtDecode } from 'jwt-decode'
 import { UserProfile } from './auth-context'
 
 const key = 'auth-token'
-const storeToken = async (authToken: string) => {
-    try {
-        SecureStore.setItemAsync(key, authToken)
-    } catch (error) {
-        console.log('Error storing the auth token')
-    }
-}
-const getUser = async () => {
-    const token = await getToken()
-    return token ? jwtDecode<UserProfile>(token) : null
-}
-
 const getToken = async () => {
     try {
         return await SecureStore.getItemAsync(key)
@@ -22,7 +10,17 @@ const getToken = async () => {
         console.log('Error getting the auth token', error)
     }
 }
-
+const getUser = async () => {
+    const token = await getToken()
+    return token ? jwtDecode<UserProfile>(token) : null
+}
+const storeToken = async (authToken: string) => {
+    try {
+        SecureStore.setItemAsync(key, authToken)
+    } catch (error) {
+        console.log('Error storing the auth token')
+    }
+}
 const removeToken = async () => {
     try {
         SecureStore.deleteItemAsync(key)
