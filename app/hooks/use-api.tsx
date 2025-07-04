@@ -4,7 +4,7 @@ type UseApiReturn<T> = {
   data: T | null;
   isLoading: boolean;
   hasError: boolean;
-  request: (...args: any[]) => Promise<void>;
+  request: (...args: any[]) => Promise<{ ok: boolean; data?: T } | undefined>;
 };
 
 function useApi<T>(
@@ -21,12 +21,9 @@ function useApi<T>(
     try {
       const response = await apiFunc(...args);
 
-      if (!response.ok) {
-        setHasError(true);
-        return;
-      }
-
+      setHasError(!response.ok);
       setData(response.data ?? null);
+      return response;
     } catch (e) {
       setHasError(true);
     } finally {
