@@ -4,12 +4,12 @@ import {
 } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/login-screen";
 import WelcomeScreen from "../screens/welcome-screen";
+import RegisterScreen from "../screens/register-screen";
 
 type AuthStackParamList = {
   Welcome: undefined;
   Login: undefined;
   Register: undefined;
-
 };
 export type AuthScreenNavigationProp = NativeStackScreenProps<
   AuthStackParamList,
@@ -30,6 +30,13 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
         options={{
           headerShown: false,
         }}
