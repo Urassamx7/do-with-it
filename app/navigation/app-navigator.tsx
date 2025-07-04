@@ -1,6 +1,4 @@
-import {
-  createBottomTabNavigator
-} from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ListingEditScreen from "../screens/listing-edit-screen";
 import FeedNavigator from "./feed-navigator";
@@ -18,10 +16,6 @@ const AppNavigator = () => (
   <Tab.Navigator
     screenOptions={{
       animation: "shift",
-      tabBarActiveBackgroundColor: "tomato",
-      tabBarActiveTintColor: "white",
-      tabBarInactiveBackgroundColor: "#eee",
-      tabBarInactiveTintColor: "black",
       headerShown: false,
     }}
   >

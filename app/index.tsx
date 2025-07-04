@@ -5,11 +5,19 @@ import AuthNavigator from "./navigation/auth-navigator";
 import AuthContext, { UserProfile } from "./auth/auth-context";
 import authStorage from "./auth/storage";
 import * as SplashScreen from "expo-splash-screen";
+import {
+  ThemeProvider,
+  useNavigationContainerRef,
+  useTheme,
+} from "@react-navigation/native";
+import myTheme from "./navigation/navigation-theme";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Index() {
   const [user, setUser] = useState<UserProfile | null>(null);
+  const navigationRef = useNavigationContainerRef();
+
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -37,6 +45,8 @@ export default function Index() {
 
   if (!isReady) return null;
 
+  const theme = useTheme();
+  console.log(theme);
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
