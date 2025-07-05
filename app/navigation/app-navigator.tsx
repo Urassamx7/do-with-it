@@ -8,7 +8,7 @@ import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import { useEffect, useState } from "react";
 import { Alert, Platform } from "react-native";
-import Constants from "expo-constants";
+import expoPushTokensApi from "../api/expo-push-tokens";
 
 type AppTabParamList = {
   "Listings Edit": undefined;
@@ -124,6 +124,7 @@ const registerForPushNotificationsAsync = async () => {
 
     try {
       token = (await Notifications.getExpoPushTokenAsync()).data;
+      expoPushTokensApi.register(token);
     } catch (error) {
       console.log(error);
     }
