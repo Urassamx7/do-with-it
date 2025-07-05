@@ -6,8 +6,9 @@ import AccountNavigator from "./account-navigator";
 import NewListingButton from "./new-listing-Button";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Platform } from "react-native";
+import Constants from "expo-constants";
 
 type AppTabParamList = {
   "Listings Edit": undefined;
@@ -33,6 +34,14 @@ Notifications.scheduleNotificationAsync({
 });
 
 const AppNavigator = () => {
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [channels, setChannels] = useState<Notifications.NotificationChannel[]>(
+    []
+  );
+  const [notification, setNotification] = useState<
+    Notifications.Notification | undefined
+  >(undefined);
+
   useEffect(() => {
     registerForPushNotificationsAsync();
   }, []);
@@ -86,6 +95,14 @@ const AppNavigator = () => {
 
 const registerForPushNotificationsAsync = async () => {
   let token;
+  if (Platform.OS === "android") {
+    await Notifications.setNotificationChannelAsync("myNotificationChannel", {
+      name: "A channel is needed for the permissions prompt to appear",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
+    });
+  }
 
   if (Device.isDevice) {
     const { status: existingStatus } =
@@ -105,22 +122,16 @@ const registerForPushNotificationsAsync = async () => {
       return;
     }
 
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log("Expo Push Token:", token);
+    try {
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+    } catch (error) {
+      console.log(error);
+    }
   } else {
     Alert.alert(
       "Atenção",
       "Notificações push só funcionam em dispositivos físicos."
     );
-  }
-
-  if (Platform.OS === "android") {
-    Notifications.setNotificationChannelAsync("default", {
-      name: "default",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: "#FF231F7C",
-    });
   }
 
   return token;
