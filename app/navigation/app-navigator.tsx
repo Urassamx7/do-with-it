@@ -4,11 +4,6 @@ import ListingEditScreen from "../screens/listing-edit-screen";
 import FeedNavigator from "./feed-navigator";
 import AccountNavigator from "./account-navigator";
 import NewListingButton from "./new-listing-Button";
-import * as Notifications from "expo-notifications";
-import * as Device from "expo-device";
-import { useEffect, useState } from "react";
-import { Alert, Platform } from "react-native";
-import expoPushTokensApi from "../api/expo-push-tokens";
 
 type AppTabParamList = {
   "Listings Edit": undefined;
@@ -17,35 +12,7 @@ type AppTabParamList = {
 };
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowBanner: true,
-    shouldShowList: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-Notifications.scheduleNotificationAsync({
-  content: {
-    title: "Look at that notification",
-    body: "I'm so proud of myself!",
-  },
-  trigger: null,
-});
-
 const AppNavigator = () => {
-  const [expoPushToken, setExpoPushToken] = useState("");
-  const [channels, setChannels] = useState<Notifications.NotificationChannel[]>(
-    []
-  );
-  const [notification, setNotification] = useState<
-    Notifications.Notification | undefined
-  >(undefined);
-
-  useEffect(() => {
-    registerForPushNotificationsAsync();
-  }, []);
-
   return (
     <Tab.Navigator
       screenOptions={{
@@ -91,51 +58,6 @@ const AppNavigator = () => {
       />
     </Tab.Navigator>
   );
-};
-
-const registerForPushNotificationsAsync = async () => {
-  let token;
-  if (Platform.OS === "android") {
-    await Notifications.setNotificationChannelAsync("myNotificationChannel", {
-      name: "A channel is needed for the permissions prompt to appear",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: "#FF231F7C",
-    });
-  }
-
-  if (Device.isDevice) {
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-
-    if (existingStatus !== "granted") {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-
-    if (finalStatus !== "granted") {
-      Alert.alert(
-        "Permissão negada",
-        "Não foi possível obter permissões para notificações push."
-      );
-      return;
-    }
-
-    try {
-      token = (await Notifications.getExpoPushTokenAsync()).data;
-      expoPushTokensApi.register(token);
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    Alert.alert(
-      "Atenção",
-      "Notificações push só funcionam em dispositivos físicos."
-    );
-  }
-
-  return token;
 };
 
 export default AppNavigator;
