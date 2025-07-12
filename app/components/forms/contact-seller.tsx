@@ -7,12 +7,9 @@ import Form from "./form";
 import * as Yup from "yup";
 import FormField from "./form-field";
 import SubmitButton from "./submit-button";
-interface BuyerInfo {
-  message: string;
-}
 
 const validationSchema = Yup.object().shape({
-  message: Yup.string().label("Message"),
+  message: Yup.string().required().min(1).label("Message"),
 });
 
 const ContactSellerForm = ({ listing }: ListingProps) => {
