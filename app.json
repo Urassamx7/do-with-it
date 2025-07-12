@@ -2,6 +2,7 @@
   "expo": {
     "name": "Done With It",
     "slug": "done-with-it",
+    "privacy": "unlisted",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/images/icon.png",
@@ -10,6 +11,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.urassamx7.donewithit",
       "supportsTablet": true,
       "jsEngine": "jsc"
     },
@@ -35,6 +38,7 @@
       "iosDisplayInForeground": true
     },
     "plugins": [
+      "@bugsnag/plugin-expo-eas-sourcemaps",
       "expo-router",
       [
         "expo-splash-screen",
@@ -67,7 +71,7 @@
         "projectId": "ff023903-99f6-4858-9f4e-1bc163155a60"
       },
       "bugsnag": {
-        "apiKey": "\u0016clear"
+        "apiKey": "e2def1230ab9552a0a21fbe5ef49564c"
       }
     },
     "owner": "marvin_mussacate"
