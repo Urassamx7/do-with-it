@@ -23,7 +23,6 @@ const ListingScreen = ({ navigation }: FeedNavigationProp) => {
 
   return (
     <>
-      {" "}
       <ActivityIndicator visible={getListingsApi.isLoading} />
       <Screen style={styles.screen}>
         {getListingsApi.hasError && (

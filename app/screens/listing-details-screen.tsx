@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import ListItem from "../components/lists/list-item";
 import Apptext from "../components/text";
 import { colors } from "../config/colors";
 import { ListingDetailsScreenProps } from "../navigation/feed-navigator";
+import ContactSellerForm from "../components/forms/contact-seller";
 
 const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
   const listing = route.params;
@@ -12,7 +13,10 @@ const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
   const image = "https://avatars.githubusercontent.com/u/128416567?v=4";
 
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+    >
       <Image
         uri={listing.item.images[0].url}
         preview={{ uri: listing.item.images[0].thumbnailUrl }}
@@ -29,8 +33,9 @@ const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
             subTitle="5 Listings"
           />
         </View>
+        <ContactSellerForm listing={listing.item} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
