@@ -5,7 +5,9 @@ import AuthNavigator from "./navigation/auth-navigator";
 import AuthContext, { UserProfile } from "./auth/auth-context";
 import authStorage from "./auth/storage";
 import * as SplashScreen from "expo-splash-screen";
+import logger from "./utils/logger";
 
+logger.start();
 SplashScreen.preventAutoHideAsync();
 
 export default function Index() {

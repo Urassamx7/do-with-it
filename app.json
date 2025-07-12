@@ -65,6 +65,9 @@
       "router": {},
       "eas": {
         "projectId": "ff023903-99f6-4858-9f4e-1bc163155a60"
+      },
+      "bugsnag": {
+        "apiKey": "\u0016clear"
       }
     },
     "owner": "marvin_mussacate"

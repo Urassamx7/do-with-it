@@ -10,6 +10,7 @@
     "lint": "expo lint"
   },
   "dependencies": {
+    "@bugsnag/expo": "^53.0.0",
     "@dev-plugins/react-navigation": "^0.3.1",
     "@expo/configure-splash-screen": "^0.6.0",
     "@expo/vector-icons": "^14.1.0",
