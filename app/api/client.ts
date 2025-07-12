@@ -2,9 +2,10 @@ import { ApiOkResponse, ApiResponse, create } from 'apisauce'
 import cache from '../utils/cache'
 import { AxiosRequestConfig } from 'axios';
 import authStorage from '../auth/storage';
+import settings from '../config/settings';
 
 const apiClient = create({
-    baseURL: 'http://172.20.10.5:3333/api'
+    baseURL: settings.apiUrl
 })
 
 
