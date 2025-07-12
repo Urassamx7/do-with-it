@@ -4,6 +4,7 @@ import ListingEditScreen from "../screens/listing-edit-screen";
 import FeedNavigator from "./feed-navigator";
 import AccountNavigator from "./account-navigator";
 import NewListingButton from "./new-listing-Button";
+import { useNotifications } from "../hooks/use-notification";
 
 type AppTabParamList = {
   "Listings Edit": undefined;
@@ -13,6 +14,7 @@ type AppTabParamList = {
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
 const AppNavigator = () => {
+  useNotifications();
   return (
     <Tab.Navigator
       screenOptions={{

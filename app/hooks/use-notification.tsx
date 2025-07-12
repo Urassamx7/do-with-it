@@ -14,12 +14,12 @@ Notifications.setNotificationHandler({
   }),
 });
 
-const useNotifications = () => {
+const useNotifications = (notificationListener?: any) => {
   useEffect(() => {
     registerForPushNotificationsAsync();
-    Notifications.addNotificationReceivedListener((notification) =>
-      navigation.navigate("Account")
-    );
+
+    if (notificationListener)
+      Notifications.addNotificationReceivedListener(notificationListener);
   }, []);
 };
 
