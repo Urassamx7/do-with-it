@@ -27,7 +27,8 @@
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION"
       ],
-      "package": "com.anonymous.donewithit"
+      "package": "com.urassamx7.donewithit",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
@@ -71,7 +72,7 @@
         "projectId": "ff023903-99f6-4858-9f4e-1bc163155a60"
       },
       "bugsnag": {
-        "apiKey": "e2def1230ab9552a0a21fbe5ef49564c"
+        "apiKey": "\u0016clear"
       }
     },
     "owner": "marvin_mussacate"
